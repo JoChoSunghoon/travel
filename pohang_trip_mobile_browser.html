@@ -36,6 +36,7 @@ body {
     linear-gradient(180deg, #f3f9fb 0%, #eef6f9 46%, #fcfaf6 100%);
   color: var(--text);
   line-height: 1.7;
+  overflow-x: hidden;
 }
 body::before {
   content: '';
@@ -265,27 +266,201 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
 .mobile-tip { margin-top: 16px; padding: 14px 16px; border-radius: 18px; background: linear-gradient(135deg, rgba(255,243,226,0.92), rgba(255,255,255,0.88)); border: 1px solid rgba(255,219,169,0.95); color: #6d5730; font-size: 14px; }
 .external-link { word-break: keep-all; }
 @media (max-width: 760px) {
-  .container { padding: 14px 10px 36px; }
-  .hero { border-radius: 26px; padding: 18px 14px; }
-  .hero-top { align-items: flex-start; }
-  .hero-icon { width: 50px; height: 50px; border-radius: 16px; }
+  body {
+    background:
+      radial-gradient(circle at top center, rgba(146,214,232,0.22) 0, transparent 38%),
+      linear-gradient(180deg, #f3f9fb 0%, #eef6f9 52%, #fcfaf6 100%);
+  }
+  body::before { background-size: 24px 24px; opacity: 0.24; }
+  .container { width: 100%; max-width: none; padding: 12px 12px 36px; }
+  .hero {
+    border-radius: 28px;
+    padding: 18px 16px 16px;
+    box-shadow: 0 20px 36px rgba(20,50,71,0.14);
+  }
+  .hero::after {
+    width: 220px;
+    height: 220px;
+    right: -96px;
+    bottom: -106px;
+  }
+  .hero-top {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .hero-icon { width: 48px; height: 48px; border-radius: 15px; padding: 7px; }
+  .eyebrow { font-size: 11px; letter-spacing: .12em; }
+  .hero h1 { font-size: clamp(26px, 9vw, 36px); line-height: 1.08; }
+  .hero-subtitle { margin-top: 8px; font-size: 14px; line-height: 1.55; }
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-top: 12px;
+    padding-bottom: 2px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+  .meta-box {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+  .meta-box-title { margin-bottom: 10px; }
   .summary-grid { grid-template-columns: 1fr; }
+  .summary-item { padding: 13px 13px 12px; border-radius: 16px; }
+  .summary-item p { font-size: 13px; line-height: 1.55; }
   .quick-nav { margin: 12px 0 14px; padding: 8px; top: 8px; }
   .quick-nav-inner {
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 2px;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
   }
   .quick-nav-inner::-webkit-scrollbar { display: none; }
-  .quick-nav a { padding: 9px 12px; font-size: 13px; }
-  .content { gap: 14px; }
-  .content > h1, .content > h2, .content > h3 { padding: 18px 16px 14px; }
-  .content > p, .content > ul, .content > ol, .content > blockquote, .content > div:not(.table-wrap) { padding: 14px 16px 18px; }
+  .quick-nav a {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 10px 13px;
+    font-size: 13px;
+    box-shadow: 0 8px 16px rgba(18,93,109,0.08);
+  }
+  .content { gap: 12px; }
+  .content > h1, .content > h2, .content > h3 {
+    padding: 17px 16px 13px;
+    border-radius: 22px 22px 0 0;
+    box-shadow: 0 14px 26px rgba(20,50,71,0.08);
+  }
+  .content > h1 { font-size: clamp(23px, 7.6vw, 30px); }
+  .content > h2 { font-size: clamp(18px, 6vw, 23px); }
+  .content > h3 { font-size: 17px; }
+  .content > p, .content > ul, .content > ol, .content > blockquote, .content > div:not(.table-wrap) {
+    padding: 14px 16px 18px;
+    border-radius: 22px;
+    box-shadow: 0 14px 26px rgba(20,50,71,0.08);
+  }
   .content > ul, .content > ol { padding-left: 34px; }
-  table.info-table { min-width: 560px; }
-  .info-table th, .info-table td { padding: 10px 10px; font-size: 13px; }
+  .content > h1 + p, .content > h1 + ul, .content > h1 + ol, .content > h1 + blockquote, .content > h1 + div:not(.table-wrap),
+  .content > h2 + p, .content > h2 + ul, .content > h2 + ol, .content > h2 + blockquote, .content > h2 + div:not(.table-wrap),
+  .content > h3 + p, .content > h3 + ul, .content > h3 + ol, .content > h3 + blockquote, .content > h3 + div:not(.table-wrap),
+  .content > h1 + .table-wrap, .content > h2 + .table-wrap, .content > h3 + .table-wrap {
+    margin-top: -10px;
+  }
+  .mobile-tip {
+    margin-top: 14px;
+    padding: 13px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .content > .table-wrap,
+  .table-wrap {
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  table.info-table {
+    min-width: 0;
+    width: 100%;
+    background: transparent;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .info-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .info-table,
+  .info-table tbody,
+  .info-table tr,
+  .info-table td {
+    display: block;
+    width: 100%;
+  }
+  .info-table tbody {
+    display: grid;
+    gap: 12px;
+  }
+  .info-table tbody tr {
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(216,230,240,0.95);
+    border-radius: 20px;
+    box-shadow: 0 14px 26px rgba(20,50,71,0.08);
+  }
+  .info-table tbody tr:nth-child(odd),
+  .info-table tbody tr:hover { background: rgba(255,255,255,0.96); }
+  .info-table td {
+    min-width: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(224,234,239,0.92);
+    font-size: 14px;
+    line-height: 1.58;
+  }
+  .info-table td:last-child {
+    min-width: 0;
+    border-bottom: 0;
+    padding-bottom: 2px;
+  }
+  .info-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    color: var(--brand-deep);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .info-table td[data-label="시간"] {
+    padding-top: 0;
+    font-weight: 800;
+    color: #103f5f;
+    font-size: 15px;
+  }
+  .info-table td[data-label="시간"]::before {
+    margin-bottom: 3px;
+    color: #4f7b91;
+  }
+  .info-table td[data-label="지도"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .info-table td[data-label="지도"]::before {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+  .info-table .external-link {
+    margin: 2px 4px 0 0;
+    padding: 7px 10px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .footer-note {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
 }
 </style>
 </head>
@@ -326,7 +501,7 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
         </div>
       </div>
     </div>
-    <div class="mobile-tip">폰에서 보기 편하도록 만든 단일 HTML이야. 지도 링크는 새 탭으로 열리도록 설정했고, 표는 가로로 밀어서 볼 수 있어.</div>
+    <div class="mobile-tip">폰에서 읽기 쉽게 표를 카드처럼 정리해둔 버전이야. 지도 링크는 새 탭으로 열리고, 빠른 이동도 손가락으로 넘기기 편하게 맞춰뒀어.</div>
   </div>
 </section>
 
@@ -1176,6 +1351,22 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
 </section>
     <p class="footer-note">이 파일은 단일 HTML이라 브라우저 앱에서 바로 열 수 있도록 이미지와 스타일을 안에 함께 넣어뒀어.</p>
   </main>
+  <script>
+    (function () {
+      var tables = document.querySelectorAll('table.info-table');
+      tables.forEach(function (table) {
+        var headers = Array.from(table.querySelectorAll('thead th')).map(function (th) {
+          return th.textContent.trim();
+        });
+        Array.from(table.querySelectorAll('tbody tr')).forEach(function (row) {
+          Array.from(row.children).forEach(function (cell, index) {
+            if (cell.tagName !== 'TD') return;
+            cell.setAttribute('data-label', headers[index] || '');
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
 
