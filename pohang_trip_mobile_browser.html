@@ -53,6 +53,24 @@ body::before {
 a { color: var(--brand-deep); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .container { max-width: 980px; margin: 0 auto; padding: 22px 16px 56px; position: relative; }
+.container,
+.hero-content,
+.hero-top > div,
+.meta-box,
+.summary-grid,
+.summary-item,
+.quick-nav,
+.quick-nav-inner,
+.content,
+.content > *,
+.table-wrap,
+.info-table,
+.info-table tbody,
+.info-table tr,
+.info-table td,
+.footer-note {
+  min-width: 0;
+}
 .hero {
   position: relative;
   overflow: hidden;
@@ -264,7 +282,16 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
 .chip { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.22); font-size: 13px; font-weight: 700; color: #fff; backdrop-filter: blur(10px); }
 .footer-note { margin-top: 20px; text-align: center; color: var(--muted); font-size: 13px; }
 .mobile-tip { margin-top: 16px; padding: 14px 16px; border-radius: 18px; background: linear-gradient(135deg, rgba(255,243,226,0.92), rgba(255,255,255,0.88)); border: 1px solid rgba(255,219,169,0.95); color: #6d5730; font-size: 14px; }
-.external-link { word-break: keep-all; }
+.external-link {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+#references + ul,
+#references + ul li,
+#references + ul a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 @media (max-width: 760px) {
   body {
     background:
@@ -272,7 +299,12 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
       linear-gradient(180deg, #f3f9fb 0%, #eef6f9 52%, #fcfaf6 100%);
   }
   body::before { background-size: 24px 24px; opacity: 0.24; }
-  .container { width: 100%; max-width: none; padding: 12px 12px 36px; }
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 12px 12px 36px;
+    overflow-x: clip;
+  }
   .hero {
     border-radius: 28px;
     padding: 18px 16px 16px;
@@ -347,6 +379,17 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
     padding: 14px 16px 18px;
     border-radius: 22px;
     box-shadow: 0 14px 26px rgba(20,50,71,0.08);
+  }
+  .content > p,
+  .content > ul,
+  .content > ol,
+  .content > blockquote,
+  .content li,
+  .content td,
+  .content a,
+  .footer-note {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .content > ul, .content > ol { padding-left: 34px; }
   .content > h1 + p, .content > h1 + ul, .content > h1 + ol, .content > h1 + blockquote, .content > h1 + div:not(.table-wrap),
@@ -455,6 +498,13 @@ hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb
     padding: 7px 10px;
     font-size: 12px;
     line-height: 1.2;
+  }
+  #references + ul {
+    padding-right: 14px;
+  }
+  #references + ul a {
+    display: inline;
+    line-height: 1.65;
   }
   .footer-note {
     margin-top: 14px;
